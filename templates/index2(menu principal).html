@@ -3,20 +3,16 @@
 {%block body%}
 
 <h1><span style="color: aqua;">Bienvenido</span></h1>
-<h2>Ingresa tus datos por favor</h2>
+<h2>Inicia sesion</h2>
 
-<form action="{{ url_for('contacto') }}" method="post">
-    <label for="nombre">Nombre</label>
-    <input id= "nombre" type="text" name="nombre" placeholder="Ingresa tu nombre">
-    <label for="numero">Numero</label>
-    <input id= "numero" type="text" name="numero" placeholder="Ingresa tu numero">
-    <label for="correo">Correo electronico</label>
-    <input id="correo" type="text" name="correo" placeholder="Ingresa tu correo">
-    <button>Enviar</button><br><br>
-    
-    <a href="{{ url_for('boton_panico') }}">
-        <img src="images/boton panico.ico">
-    </a>
-</form>
+<input type="text" name="correo_inicio_sesion" placeholder="Ingresa tu correo"><br><br>
+<input type="password" name="contraseña_inicio_sesion" placeholder="Ingresa tu contraseña"><br><br>
+
+<a href="{{ url_for('crear_cuenta') }}">si no posees una cuenta clickea aqui</a><br><br>
+
+
+<a href="{{ url_for('boton_panico') }}">
+    <img src="images/boton panico.ico">
+</a>
 
 {%endblock%}

@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+
+{% block body %}
+
+<h2>Ingresa tus datos</h2>
+
+<form action="{{ url_for('contacto') }}" method="post">
+    
+    <label for="nombre">Nombre</label>
+    <input id= "nombre" type="text" name="nombre" placeholder="Ingresa tu nombre">
+    <label for="correo">Correo electronico</label>
+    <input id="correo" type="text" name="correo" placeholder="Ingresa tu correo">
+    <label for="contraseña">contraseña</label>
+    <input id= "contraseña" type="password" name="contraseña" placeholder="Ingresa tu contraseña">
+    <button type="submit">Enviar</button>
+    
+</form>
+
+{%endblock%}

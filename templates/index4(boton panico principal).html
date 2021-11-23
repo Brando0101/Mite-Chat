@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>Bienvenido al boton de panico </h1><br><br>
+<h2>¿primera vez aqui?</h2><br>
+<a href="{{ url_for('primera_vez_boton_panico') }}">SI!</a>
+<a href="{{ url_for('mostrar_guardado_boton_panico') }}">NOP</a>
+
+{%endblock%}

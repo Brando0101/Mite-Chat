@@ -26,6 +26,11 @@ def primera_vez_boton_panico():
 def mostrar_guardado_boton_panico():
     return render_template("index6(guardado_boton).html")
 
+@app.route('/chatbot')
+def chatbot():
+    return render_template('index7(chatbot).html')
+
+
 
 
 

@@ -1,14 +1,11 @@
 from flask import Flask, render_template, request
 from random import randint
 
-app = Flask(__name__)
-
-
+app = Flask(__name__, static_folder='statics')
 
 @app.route('/')
 def index():
     return render_template('index2(menu principal).html')
-
 
 @app.route('/contacto', methods=['POST'])
 def contacto():
@@ -28,6 +25,13 @@ def primera_vez_boton_panico():
 @app.route('/guardado_boton')
 def mostrar_guardado_boton_panico():
     return render_template("index6(guardado_boton).html")
+
+
+
+
+
+
+
 
 
 

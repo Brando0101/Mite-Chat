@@ -3,7 +3,7 @@ from flask_mysqldb import MySQL
 
 app = Flask(__name__, static_folder='statics')
 # instrucciones que le damos a la app para conectarse a la base de datos
-app.config['MYSQL_HOST']= 'localhost' #pero realmente no quiero que se conecte a esta direccion de enlace, sino a la que todos puedan acceder
+app.config['MYSQL_HOST']= 'localhost' #pero realmente no quiero que se conecte a esta direccion de enlace, sino una a la que todos puedan acceder
 app.config['MYSQL_USER']= 'root' 
 app.config['MYSQL_PASSWORD']= '' 
 app.config['MYSQL_DB']= 'chat_bot' 

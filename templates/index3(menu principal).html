@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{%block body%}
+
+<a href="{{ url_for('ajustes') }}">
+    <img src="images/ajustes.png">
+</a><br><br>
+
+<a href="{{ url_for('chat') }}">falta la foto de "CHATEAR"</a><br><br>
+
+<a href="{{ url_for('psicologos') }}">
+    <img src="images/boton_psicologos.png">
+</a><br><br>
+
+<a href="{{ url_for('lista_tareas') }}">
+    <img src="images/tareas.png">
+</a><br><br>
+
+<a href="{{ url_for('boton_panico') }}">
+    <img src="images/boton panico.ico">
+</a>
+
+{%endblock%}

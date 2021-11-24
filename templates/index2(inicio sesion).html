@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{%block body%}
+
+<h1><span style="color: aqua;">Bienvenido</span></h1>
+<h2>Inicia sesion</h2>
+<form action="verificar_usuario", method="post">
+    <input type="text" name="correo_inicio_sesion" placeholder="Ingresa tu correo"><br><br>
+    <input type="password" name="contraseña_inicio_sesion" placeholder="Ingresa tu contraseña"><br><br>
+</form>
+
+
+<a href="{{ url_for('crear_cuenta') }}">si no posees una cuenta, haz click aqui para crear una</a><br><br>
+
+
+
+
+{%endblock%}

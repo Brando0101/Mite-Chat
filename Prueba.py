@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
 
-app = Flask(__name__, static_folder='statics')
+app = Flask(__name__, static_folder='static')
 # instrucciones que le damos a la app para conectarse a la base de datos
 app.config['MYSQL_HOST']= 'localhost' #pero realmente no quiero que se conecte a esta direccion de enlace, sino una a la que todos puedan acceder
 app.config['MYSQL_USER']= 'root' 

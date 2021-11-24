@@ -1,18 +1,19 @@
-{% extends 'base.html' %}
-
-{%block body%}
-
-<h1><span style="color: aqua;">Bienvenido</span></h1>
-<h2>Inicia sesion</h2>
-<form action="verificar_usuario", method="post">
-    <input type="text" name="correo_inicio_sesion" placeholder="Ingresa tu correo"><br><br>
-    <input type="password" name="contraseña_inicio_sesion" placeholder="Ingresa tu contraseña"><br><br>
-</form>
-
-
-<a href="{{ url_for('crear_cuenta') }}">si no posees una cuenta, haz click aqui para crear una</a><br><br>
-
-
-
-
-{%endblock%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CHAT BOT</title>
+    <meta charset="utf-8"> 
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/estilo.css') }}">
+</head>
+<body>
+  <section class="form-register">
+    <form action="verificar_usuario", method="post">
+        <h2>Inicia sesión</h2>
+        <input class="controls" type="text" name="correo_inicio_sesion" placeholder="Ingresa tu correo"><br><br>
+        <input class="controls" type="password" name="contraseña_inicio_sesion" placeholder="Ingresa tu contraseña"><br><br>
+    </form>
+    
+    <a href="{{ url_for('crear_cuenta') }}">¿Nuevo/a en Mite? Crea una cuenta.</a><br><br>
+  </section>
+</body>
+</html>

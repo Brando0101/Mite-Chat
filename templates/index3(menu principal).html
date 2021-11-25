@@ -2,22 +2,24 @@
 
 {%block body%}
 
+<a href="{{ url_for('boton_panico') }}">
+    <img src="/static/images/boton panico.ico" width="400px">
+</a><br><br>
+
 <a href="{{ url_for('ajustes') }}">
-    <img src="images/ajustes.png">
+    <img src="/static/images/ajustes.png" width="400px">
 </a><br><br>
 
 <a href="{{ url_for('chat') }}">falta la foto de "CHATEAR"</a><br><br>
 
 <a href="{{ url_for('psicologos') }}">
-    <img src="images/boton_psicologos.png">
+    <img src="/static/images/boton_psicologos.png" width="400px">
 </a><br><br>
 
 <a href="{{ url_for('lista_tareas') }}">
-    <img src="images/tareas.png">
-</a><br><br>
-
-<a href="{{ url_for('boton_panico') }}">
-    <img src="images/boton panico.ico">
+    <img src="/static/images/tareas.png" width="400px">
 </a>
+
+
 
 {%endblock%}

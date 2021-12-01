@@ -1,7 +1,11 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, url_for
 from flask_mysqldb import MySQL
+import MySQLdb.cursors
+import os
 
 app = Flask(__name__, static_folder='static')
+app.secret_key = os.urandom(24)
+app.debug= True
 # instrucciones que le damos a la app para conectarse a la base de datos
 app.config['MYSQL_HOST']= 'localhost' #pero realmente no quiero que se conecte a esta direccion de enlace, sino una a la que todos puedan acceder
 app.config['MYSQL_USER']= 'root' 
@@ -63,9 +67,25 @@ def psicologos():
     return render_template('index12(lista psicologos).html')
 
 #verificar si el usuario esta en la base de datos
-@app.route('/verificacion')
+@app.route('/verificacion', methods= ['POST'])
 def verificar_usuario():
-    return render_template('index13(verificacion de usuario).html')
+    if request.method == 'POST' and "correo.inicio.sesion" in request.form and "contrasena.inicio.sesion" in request.form:
+        correo = request.form.get("correo.inicio.sesion")
+        contrasena = request.form.get("contrasena.inicio.sesion")
+        cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cur.execute('SELECT * FROM usuarios WHERE password = %s AND email = %s', 
+        (contrasena, correo))
+        cuenta = cur.fetchone()
+        if cuenta:
+            session['loggedin'] = True
+            session['id'] = cuenta['id']
+            session['fullname'] = cuenta['fullname']
+            return 'se ha iniciado sesion correctamente'
+        else:
+            return 'usuario o contraseña incorrectos'
+
+        
+    #return render_template('index13(verificacion de usuario).html')
 
 # lista de tareas
 @app.route('/lista_tareas')

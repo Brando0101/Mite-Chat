@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request, session, url_for
+from flask import Flask, render_template, request, session, url_for, redirect
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import os
+
+from werkzeug.utils import redirect
 
 app = Flask(__name__, static_folder='static')
 app.secret_key = os.urandom(24)
@@ -10,7 +12,7 @@ app.debug= True
 app.config['MYSQL_HOST']= 'localhost' #pero realmente no quiero que se conecte a esta direccion de enlace, sino una a la que todos puedan acceder
 app.config['MYSQL_USER']= 'root' 
 app.config['MYSQL_PASSWORD']= '' 
-app.config['MYSQL_DB']= 'chat_bot' 
+app.config['MYSQL_DB']= 'chat_bot2' 
 mysql= MySQL(app)
 
 lista=list()
@@ -26,7 +28,7 @@ def contacto():
     contraseña= request.form.get('contraseña')
     email= request.form.get('correo')
     cur = mysql.connection.cursor()
-    cur.execute('INSERT INTO usuarios (fullname, password, email) VALUES (%s, %s, %s)',
+    cur.execute('INSERT INTO usuarios (name, password, email) VALUES (%s, %s, %s)',
     (nombre, contraseña, email))
     mysql.connection.commit()
     return render_template('index3(menu principal).html', name= nombre)
@@ -40,6 +42,24 @@ def boton_panico():
 @app.route('/primera_vez_boton')
 def primera_vez_boton_panico():
     return render_template('index5(boton panico primera vez).html')
+
+def transformar_foto_binario(foto):
+    with open(foto, 'rb') as file:
+        informacion_binaria1= foto.read()
+    return informacion_binaria1
+
+# Esta ruta guarda la url que se han ingresado al boton de panico y transforma la foto en binario
+@app.route('/guardando_datos', methods=['POST'])
+def guardar_datos_boton():  
+    foto_0= request.form.get('foto')
+    foto1 = transformar_foto_binario(foto_0)
+    url= request.form.get('cancion')
+    cur = mysql.connection.cursor()
+    cur.execute('INSERT INTO usuarios (enlaces, photo) VALUES (%s, %s)',
+    (url, foto1))
+    mysql.connection.commit()
+    return render_template('index3(menu principal).html')    
+
 
 # boton de panico cuando ya se han agregado las cosas
 @app.route('/guardado_boton')
@@ -79,7 +99,7 @@ def verificar_usuario():
         if cuenta:
             session['loggedin'] = True
             session['id'] = cuenta['id']
-            session['fullname'] = cuenta['fullname']
+            session['fullname'] = cuenta['name']
             return render_template('index3(menu principal).html')
         else:
             return render_template('index14(error datos ingresados).html')

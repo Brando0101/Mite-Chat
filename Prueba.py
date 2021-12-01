@@ -80,9 +80,9 @@ def verificar_usuario():
             session['loggedin'] = True
             session['id'] = cuenta['id']
             session['fullname'] = cuenta['fullname']
-            return 'se ha iniciado sesion correctamente'
+            return render_template('index3(menu principal).html')
         else:
-            return 'usuario o contraseña incorrectos'
+            return render_template('index14(error datos ingresados).html')
 
         
     #return render_template('index13(verificacion de usuario).html')

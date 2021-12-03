@@ -4,7 +4,7 @@
 
 <p> Se explica como funciona todo </p>
 
-<form action="{{ url_for('guardar_datos_boton') }}" method="post">
+<form action="{{ url_for('guardar_datos_boton') }}" method="post" enctype="multipart/form-data">
     <label>Adjunta tus imagenes</label>
     <input type="file" name= "foto" placeholder="Ingresa aqui tus imagenes"><br>
     <label>Ingresa tus canciones</label>

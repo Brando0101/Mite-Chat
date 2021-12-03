@@ -3,11 +3,14 @@ from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import os
 
-from werkzeug.utils import redirect
+
 
 app = Flask(__name__, static_folder='static')
 app.secret_key = os.urandom(24)
 app.debug= True
+app.config['UPLOAD_FOLDER'] = 'upload'
+app.config['MAX_CONTENT_LENGTH'] = (1024 * 1024)*10
+
 # instrucciones que le damos a la app para conectarse a la base de datos
 app.config['MYSQL_HOST']= 'localhost' #pero realmente no quiero que se conecte a esta direccion de enlace, sino una a la que todos puedan acceder
 app.config['MYSQL_USER']= 'root' 
@@ -31,6 +34,7 @@ def contacto():
     cur.execute('INSERT INTO usuarios (name, password, email) VALUES (%s, %s, %s)',
     (nombre, contraseña, email))
     mysql.connection.commit()
+    session['id'] = cur.lastrowid
     return render_template('index3(menu principal).html', name= nombre)
 
 # boton de panico principal
@@ -45,20 +49,24 @@ def primera_vez_boton_panico():
 
 def transformar_foto_binario(foto):
     with open(foto, 'rb') as file:
-        informacion_binaria1= foto.read()
+        informacion_binaria1= file.read()
     return informacion_binaria1
 
 # Esta ruta guarda la url que se han ingresado al boton de panico y transforma la foto en binario
 @app.route('/guardando_datos', methods=['POST'])
 def guardar_datos_boton():  
-    foto_0= request.form.get('foto')
-    foto1 = transformar_foto_binario(foto_0)
+    foto_0= request.files['foto']
+    filename = foto_0.filename
+    foto_0.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    foto1 = transformar_foto_binario(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     url= request.form.get('cancion')
     cur = mysql.connection.cursor()
-    cur.execute('INSERT INTO usuarios (enlaces, photo) VALUES (%s, %s)',
-    (url, foto1))
+    cur.execute("UPDATE usuarios SET photo= %s, enlaces= %s WHERE id= %s",
+    (foto1, url, session['id']))
     mysql.connection.commit()
     return render_template('index3(menu principal).html')    
+
+
 
 
 # boton de panico cuando ya se han agregado las cosas

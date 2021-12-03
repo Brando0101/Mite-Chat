@@ -34,7 +34,7 @@ def contacto():
     cur.execute('INSERT INTO usuarios (name, password, email) VALUES (%s, %s, %s)',
     (nombre, contraseña, email))
     mysql.connection.commit()
-    session['id'] = cur.lastrowid
+    session['id'] = cur.lastrowid #last row id =  id de la ultima fila
     return render_template('index3(menu principal).html', name= nombre)
 
 # boton de panico principal
@@ -47,12 +47,13 @@ def boton_panico():
 def primera_vez_boton_panico():
     return render_template('index5(boton panico primera vez).html')
 
+# funcion que transforma la foto a binario
 def transformar_foto_binario(foto):
     with open(foto, 'rb') as file:
         informacion_binaria1= file.read()
     return informacion_binaria1
 
-# Esta ruta guarda la url que se han ingresado al boton de panico y transforma la foto en binario
+# Esta ruta guarda la url y la imagegn que se han ingresado al boton de panico 
 @app.route('/guardando_datos', methods=['POST'])
 def guardar_datos_boton():  
     foto_0= request.files['foto']
@@ -65,8 +66,6 @@ def guardar_datos_boton():
     (foto1, url, session['id']))
     mysql.connection.commit()
     return render_template('index3(menu principal).html')    
-
-
 
 
 # boton de panico cuando ya se han agregado las cosas

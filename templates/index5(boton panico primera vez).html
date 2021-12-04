@@ -6,9 +6,9 @@
 
 <form action="{{ url_for('guardar_datos_boton') }}" method="post" enctype="multipart/form-data">
     <label>Adjunta tus imagenes</label>
-    <input type="file" name= "foto" placeholder="Ingresa aqui tus imagenes"><br>
+    <input type="file" name= "foto" placeholder="Ingresa aqui tus imagenes" required><br>
     <label>Ingresa tus canciones</label>
-    <input type="url" name= "cancion" placeholder="Ingresa la URL"><br><br>
+    <input type="url" name= "cancion" placeholder="Ingresa la URL" required><br><br>
     <button type="submit">Enviar</button>
 
 </form>

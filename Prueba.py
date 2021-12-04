@@ -25,17 +25,24 @@ def index():
     return render_template('index2(inicio sesion).html')
 
 # añadir un usuario
-@app.route('/contacto', methods=['POST'])
+@app.route('/contacto', methods=['GET', 'POST'])
 def contacto():
-    nombre= request.form.get('nombre')
-    contraseña= request.form.get('contraseña')
-    email= request.form.get('correo')
-    cur = mysql.connection.cursor()
-    cur.execute('INSERT INTO usuarios (name, password, email) VALUES (%s, %s, %s)',
-    (nombre, contraseña, email))
-    mysql.connection.commit()
-    session['id'] = cur.lastrowid #last row id =  id de la ultima fila
-    return render_template('index3(menu principal).html', name= nombre)
+    if request.method == 'POST' and 'nombre' in request.form and 'contrasena' in request.form and 'correo' in request.form: # los and son para verificar que se ingresan datos en los espacios
+        nombre= request.form.get('nombre')
+        contraseña= request.form.get('contrasena')
+        email= request.form.get('correo')
+        cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cur.execute('SELECT * FROM usuarios WHERE email = %s', 
+        (email,))
+        cuenta = cur.fetchone()
+        if cuenta:
+            return render_template('index15(correo ya existe).html')
+        else:
+            cur.execute('INSERT INTO usuarios (name, password, email) VALUES (%s, %s, %s)',
+            (nombre, contraseña, email,))
+            mysql.connection.commit()
+        session['id'] = cur.lastrowid #last row id =  id de la ultima fila
+        return render_template('index3(menu principal).html', name= nombre)
 
 # boton de panico principal
 @app.route('/boton-de-panico')
@@ -67,10 +74,22 @@ def guardar_datos_boton():
     mysql.connection.commit()
     return render_template('index3(menu principal).html')    
 
+# funcion que vuelve el archivo blob a imagen (.jpg o .png)
+def transformar_foto(imagen, foto_a_dar):
+    with open(foto_a_dar, 'wb') as file:
+        foto_final = file.write(imagen)
+    return foto_final
+    
 
 # boton de panico cuando ya se han agregado las cosas
 @app.route('/guardado_boton')
 def mostrar_guardado_boton_panico():
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute('SELECT photo FROM usuarios WHERE id = %s', 
+    (session['id'],))
+    cuenta = cur.fetchone()
+    if cuenta:
+        
     return render_template("index6(guardado_boton).html")
 
 # ruta para ingresar los datos, que luego se enviaran al /contacto

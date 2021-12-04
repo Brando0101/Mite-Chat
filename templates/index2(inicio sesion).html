@@ -9,8 +9,8 @@
   <section class="form-register">
     <form action="{{ url_for('verificar_usuario') }}", method="post">
         <h2>Inicia sesión</h2>
-        <input class='controls' type="text" name="correo.inicio.sesion" placeholder="Ingresa tu correo"><br><br>
-        <input class="controls" type="password" name="contrasena.inicio.sesion" placeholder="Ingresa tu contraseña"><br><br>
+        <input class='controls' type="text" name="correo.inicio.sesion" placeholder="Ingresa tu correo" required><br><br>
+        <input class="controls" type="password" name="contrasena.inicio.sesion" placeholder="Ingresa tu contraseña" required><br><br>
         <button class="button" type="submit">Login</button>
     </form>
     

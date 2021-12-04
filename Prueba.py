@@ -60,11 +60,12 @@ def transformar_foto_binario(foto):
         informacion_binaria1= file.read()
     return informacion_binaria1
 
-# Esta ruta guarda la url y la imagegn que se han ingresado al boton de panico 
+# Esta ruta guarda la url y la imagen que se han ingresado al boton de panico 
 @app.route('/guardando_datos', methods=['POST'])
 def guardar_datos_boton():  
     foto_0= request.files['foto']
     filename = foto_0.filename
+    print(filename)
     foto_0.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     foto1 = transformar_foto_binario(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     url= request.form.get('cancion')
@@ -75,7 +76,8 @@ def guardar_datos_boton():
     return render_template('index3(menu principal).html')    
 
 # funcion que vuelve el archivo blob a imagen (.jpg o .png)
-def transformar_foto(imagen, foto_a_dar):
+#def transformar_foto(imagen):
+    #foto_a_dar = src'./salir.jpg'
     with open(foto_a_dar, 'wb') as file:
         foto_final = file.write(imagen)
     return foto_final
@@ -85,12 +87,17 @@ def transformar_foto(imagen, foto_a_dar):
 @app.route('/guardado_boton')
 def mostrar_guardado_boton_panico():
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute('SELECT photo FROM usuarios WHERE id = %s', 
+    #print(session['id'])
+    cur.execute('SELECT photo, enlaces FROM usuarios WHERE id = %s',
     (session['id'],))
-    cuenta = cur.fetchone()
-    if cuenta:
-        
-    return render_template("index6(guardado_boton).html")
+    cuenta = cur.fetchall()
+    #print(cuenta)
+    for datos in cuenta:
+        foto_bd = datos['photo']
+        with open('salir.jpg', 'wb') as file:
+            foto_final = file.write(foto_bd)
+        url_final = datos['enlaces']
+    return render_template("index6(guardado_boton).html", foto_mostrar = foto_final, url_salida = url_final)
 
 # ruta para ingresar los datos, que luego se enviaran al /contacto
 @app.route('/crear_cuenta')
@@ -125,6 +132,7 @@ def verificar_usuario():
         if cuenta:
             session['loggedin'] = True
             session['id'] = cuenta['id']
+
             session['fullname'] = cuenta['name']
             return render_template('index3(menu principal).html')
         else:

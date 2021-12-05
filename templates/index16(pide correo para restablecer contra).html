@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+
+{% block body%}
+
+<form action="{{ url_for('restablecer_pw') }}" method="post">
+    <p>Ingresa el correo de que usas en tu inicio de sesion, te llegara a tu correo un codigo para reestablecer la contraseña</p>
+    <input type="text" name="correo_restablecer" placeholder="ingresa tu correo" required>
+    <button class="button" type="submit">Enviar</button>
+
+</form>
+
+{%endblock%}

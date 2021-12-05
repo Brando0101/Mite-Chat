@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, session, url_for, redirect
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import os
+import smtplib
+from random import randint
 
 
 
@@ -34,7 +36,8 @@ def contacto():
         cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cur.execute('SELECT * FROM usuarios WHERE email = %s', 
         (email,))
-        cuenta = cur.fetchone()
+        cuenta = cur.fetchall()
+        print(cuenta)
         if cuenta:
             return render_template('index15(correo ya existe).html')
         else:
@@ -47,8 +50,18 @@ def contacto():
 # boton de panico principal
 @app.route('/boton-de-panico')
 def boton_panico():
-    return render_template('index4(boton panico principal).html')
-
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute('SELECT photo, enlaces FROM usuarios WHERE id = %s',
+    (session['id'],))
+    #print(session['id'])
+    cuenta = cur.fetchall()
+    #print(cuenta)
+    for datos in cuenta:
+        if datos['photo'] == None and datos['enlaces'] == None:
+            return render_template('index5(boton panico primera vez).html')
+        elif datos['photo'] != None and datos['enlaces'] != None:
+            return redirect(url_for('mostrar_guardado_boton_panico'))
+ 
 #boton de panico para agregar tu cosas; ya que no deberia preguntarte si es primera vez que entras al boton de panico al haber iniciado sesion.
 @app.route('/primera_vez_boton')
 def primera_vez_boton_panico():
@@ -87,16 +100,15 @@ def guardar_datos_boton():
 @app.route('/guardado_boton')
 def mostrar_guardado_boton_panico():
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    #print(session['id'])
     cur.execute('SELECT photo, enlaces FROM usuarios WHERE id = %s',
     (session['id'],))
     cuenta = cur.fetchall()
-    #print(cuenta)
     for datos in cuenta:
         foto_bd = datos['photo']
         with open('static/salir.jpg', 'wb') as file:
             foto_final = file.write(foto_bd)
         url_final = datos['enlaces']
+    print(url_final)
     return render_template("index6(guardado_boton).html", foto_mostrar = foto_final, url_salida = url_final)
 
 # ruta para ingresar los datos, que luego se enviaran al /contacto
@@ -146,9 +158,24 @@ def verificar_usuario():
 def lista_tareas():
     return render_template('index7(lista_tareas).html')
 
+@app.route('/redirigir_rest_contrasena')
+def redirigir():
+    return render_template('index16(pide correo para restablecer contra).html')
 
 
-#@app.route('/agregar tarea', methods=['POST'])
+@app.route('/enviar_correo_para_restablecer', methods=['POST'])
+def restablecer_pw():
+    numero_verificador= str(randint(1000,9999))
+    mensaje = 'tu numero verificador es ' + numero_verificador
+    correo_1= request.form.get('correo_restablecer')
+    server = smtplib.SMTP('smtp.gmail.com', 587) #aqui me conecto al 'servidor' de gmail
+    server.starttls()
+    server.login('mite.tu.acompanante@gmail.com', 'Miteproyecto')
+    server.sendmail('mite.tu.acompanante@gmail.com', correo_1, mensaje)
+    server.quit()
+    return render_template('index17(restablecer_contrasena).html')
+
+#@app.route('')
 
 
 

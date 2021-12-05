@@ -173,9 +173,14 @@ def restablecer_pw():
     server.login('mite.tu.acompanante@gmail.com', 'Miteproyecto')
     server.sendmail('mite.tu.acompanante@gmail.com', correo_1, mensaje)
     server.quit()
-    return render_template('index17(restablecer_contrasena).html')
+    return render_template('index17(verificar codigo).html')
 
-#@app.route('')
+@app.route('/verificar')
+def verificar_codigo():
+    codigo = request.form.get('codigo_ingresado')
+    if codigo == numero_verificador:
+        
+
 
 
 

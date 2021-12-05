@@ -94,7 +94,7 @@ def mostrar_guardado_boton_panico():
     #print(cuenta)
     for datos in cuenta:
         foto_bd = datos['photo']
-        with open('salir.jpg', 'wb') as file:
+        with open('static/salir.jpg', 'wb') as file:
             foto_final = file.write(foto_bd)
         url_final = datos['enlaces']
     return render_template("index6(guardado_boton).html", foto_mostrar = foto_final, url_salida = url_final)

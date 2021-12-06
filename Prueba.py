@@ -61,7 +61,7 @@ def boton_panico():
             return render_template('index5(boton panico primera vez).html')
         elif datos['photo'] != None and datos['enlaces'] != None:
             return redirect(url_for('mostrar_guardado_boton_panico'))
- 
+
 #boton de panico para agregar tu cosas; ya que no deberia preguntarte si es primera vez que entras al boton de panico al haber iniciado sesion.
 @app.route('/primera_vez_boton')
 def primera_vez_boton_panico():

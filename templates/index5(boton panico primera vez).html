@@ -1,18 +1,21 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CHAT BOT</title>
+    <meta charset="utf-8"> 
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/boton_panic_prim.css') }}">
+</head>
+<body>
+    <p> Se explica como funciona todo </p>
 
-{% block body %}
+    <form action="{{ url_for('guardar_datos_boton') }}" method="post" enctype="multipart/form-data">
+        <label>Adjunta tus imagenes</label>
+        <input type="file" name= "foto" placeholder="Ingresa aqui tus imagenes" required><br>
+        <label>Ingresa tus canciones</label>
+        <input type="url" name= "cancion" placeholder="Ingresa la URL" required><br><br>
+        <button type="submit">Enviar</button>
 
-<p> Se explica como funciona todo </p>
+    </form>
 
-<form action="{{ url_for('guardar_datos_boton') }}" method="post" enctype="multipart/form-data">
-    <label>Adjunta tus imagenes</label>
-    <input type="file" name= "foto" placeholder="Ingresa aqui tus imagenes" required><br>
-    <label>Ingresa tus canciones</label>
-    <input type="url" name= "cancion" placeholder="Ingresa la URL" required><br><br>
-    <button type="submit">Enviar</button>
-
-</form>
-
-
-
-{% endblock %}
+</body>
+</html>

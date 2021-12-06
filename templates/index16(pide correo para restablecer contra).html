@@ -1,12 +1,16 @@
-{% extends 'base.html'%}
-
-{% block body%}
-
-<form action="{{ url_for('envia_correo_pw') }}" method="post">
-    <p>Ingresa el correo de que usas en tu inicio de sesion, te llegara a tu correo un codigo para reestablecer la contraseña</p>
-    <input type="email" name="correo_restablecer" placeholder="ingresa tu correo" required>
-    <button class="button" type="submit">Enviar</button>
-
-</form>
-
-{%endblock%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CHAT BOT</title>
+    <meta charset="utf-8"> 
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/pide_correo.css') }}">
+</head>
+<body>
+    <form action="{{ url_for('envia_correo_pw') }}" method="post">
+        <p>Ingresa el correo de que usas en tu inicio de sesion, te llegara a tu correo un codigo para reestablecer la contraseña</p>
+        <input type="email" name="correo_restablecer" placeholder="ingresa tu correo" required>
+        <button class="button" type="submit">Enviar</button>
+    
+    </form>
+</body>
+</html>

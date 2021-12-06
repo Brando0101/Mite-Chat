@@ -1,14 +1,17 @@
-{% extends 'base.html' %}
-
-{%block body%}
-
-<form action="{{ url_for('cambiar_pw') }}" method="post">
-
-    <input type="password" name="nueva_contrasena" placeholder="ingrese su nueva contrasena" required>
-    <input type="password" name="nueva_contrasena_2" placeholder="vuelva a ingresar su nueva contrasena" required>
-    <button type="submit">Enviar</button><br>
-    <p>Las contraseñas no coinciden</p>
-</form>
-
-
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CHAT BOT</title>
+    <meta charset="utf-8"> 
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/pw_no_coinciden.css') }}">
+</head>
+<body>
+    <form action="{{ url_for('cambiar_pw') }}" method="post">
+        <input type="password" name="nueva_contrasena" placeholder="ingrese su nueva contrasena" required>
+        <input type="password" name="nueva_contrasena_2" placeholder="vuelva a ingresar su nueva contrasena" required>
+        <button type="submit">Enviar</button><br>
+        <p>Las contraseñas no coinciden</p>
+    </form>
+    
+</body>
+</html>

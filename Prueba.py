@@ -108,8 +108,10 @@ def mostrar_guardado_boton_panico():
         with open('static/salir.jpg', 'wb') as file:
             foto_final = file.write(foto_bd)
         url_final = datos['enlaces']
-    print(url_final)
-    return render_template("index6(guardado_boton).html", foto_mostrar = foto_final, url_salida = url_final)
+    url_final_cambiada=url_final.replace("watch?v=","embed/")
+    url_final_cambiada+= "?autoplay=1"
+    print(url_final_cambiada)
+    return render_template("index6(guardado_boton).html", foto_mostrar = foto_final, url_salida = url_final_cambiada)
 
 # ruta para ingresar los datos, que luego se enviaran al /contacto
 @app.route('/crear_cuenta')

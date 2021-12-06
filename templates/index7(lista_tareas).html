@@ -1,15 +1,16 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CHAT BOT</title>
+    <meta charset="utf-8"> 
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/lista_tareas.css') }}">
+</head>
+<body>
+    <h1>Lista de tareas</h1>
 
-{% block body %}
-
-
-<h1>Lista de tareas</h1>
-
-<a href="{{ url_for('boton_panico') }}">
-    <img src="/static/images/boton.png" width="200px"; position=fixed>
-</a>
-
-
-
-
-{%endblock%}
+    <a href="{{ url_for('boton_panico') }}">
+        <img src="/static/images/boton.png" width="200px"; position=fixed>
+    </a>
+    
+</body>
+</html>

@@ -1,8 +1,13 @@
-{% extends "base.html" %}
-
-{% block body%}
-
-<p>Ingresa tu sugerencia!</p>
-<textarea name="comentarios" placeholder="ingresa tu comentario, sientete libre de escribir lo que quieras"></textarea>
-
-{%endblock%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CHAT BOT</title>
+    <meta charset="utf-8"> 
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/sugerencias.css') }}">
+</head>
+<body>
+    <p>Ingresa tu sugerencia!</p>
+    <textarea name="comentarios" placeholder="ingresa tu comentario, sientete libre de escribir lo que quieras"></textarea>
+ 
+</body>
+</html>

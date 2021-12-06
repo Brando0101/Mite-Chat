@@ -1,11 +1,14 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CHAT BOT</title>
+    <meta charset="utf-8"> 
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/boton_panic_guard.css') }}">
+</head>
+<body>
+    <img src="/static/salir.jpg"><br><br>
 
-{% block body %}
 
-<img src="/static/salir.jpg"><br><br>
-
-<a href="{{ url_salida }}" target="_blank">ver aqui tu cancion!</a>
-
-
-
-{%endblock%}
+    <iframe width="560" height="315" src="{{ url_salida }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</body>
+</html>

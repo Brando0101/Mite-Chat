@@ -6,15 +6,20 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/boton_panic_guard.css') }}">
 </head>
 <body>
+    <div class="confi">
+        <div class="atras">
+            <a href="{{ url_for('redirigir_menuprincipal') }}">
+                <img src="/static/images/boton retroceder.png" width="8%">
+            </a>
+        </div>
 
-    <a href="{{ url_for('redirigir_menuprincipal') }}">
-        <img src="/static/images/boton retroceder.png">
-    </a>
+        <div class="videazo">
+            <iframe width="616" height="346.5" src="{{ url_salida }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
 
-
-    <img src="/static/salir.jpg"><br><br>
-
-
-    <iframe width="560" height="315" src="{{ url_salida }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="imagenprincipal">
+            <img src="/static/salir.jpg" media="maximum-scale" height="348"><br><br>
+        </div>
+    </div>
 </body>
 </html>

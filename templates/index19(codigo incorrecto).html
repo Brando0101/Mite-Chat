@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block body%}
+
+<form action="{{ url_for('verificar_codigo') }}">
+    <p>Ingrese el codigo que ha llegado a su correo (puede que el correo este en la carpeta de spam)</p>
+    <input type="text" name="codigo_ingresado" placeholder="ingrese su codigo verificador">
+    <button type="submit" class="button">Enviar</button><br>
+    <p>el codigo ingresado es incorrecto</p>
+</form>
+
+{%endblock%}

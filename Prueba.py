@@ -157,15 +157,20 @@ def verificar_usuario():
 @app.route('/lista_tareas')
 def lista_tareas():
     return render_template('index7(lista_tareas).html')
-
+# solo redirige a un html luego de presionar que se le ha olvidado la contraseña
 @app.route('/redirigir_rest_contrasena')
 def redirigir():
     return render_template('index16(pide correo para restablecer contra).html')
 
+def numero():
+    numero_verificador= str(randint(1000,9999))
+    return numero_verificador
 
+# le envia el codigo de verificacion al correo
 @app.route('/enviar_correo_para_restablecer', methods=['POST'])
 def restablecer_pw():
-    numero_verificador= str(randint(1000,9999))
+    numero_verificador= numero()
+    print(numero_verificador)
     mensaje = 'tu numero verificador es ' + numero_verificador
     correo_1= request.form.get('correo_restablecer')
     server = smtplib.SMTP('smtp.gmail.com', 587) #aqui me conecto al 'servidor' de gmail
@@ -173,12 +178,21 @@ def restablecer_pw():
     server.login('mite.tu.acompanante@gmail.com', 'Miteproyecto')
     server.sendmail('mite.tu.acompanante@gmail.com', correo_1, mensaje)
     server.quit()
-    return render_template('index17(verificar codigo).html')
+    return render_template('index17(verificar codigo).html'), numero_verificador
 
+
+
+# verifica si el codigo ingresado es el correcto
 @app.route('/verificar')
 def verificar_codigo():
     codigo = request.form.get('codigo_ingresado')
+    numero_verificador = numero()
+    print(numero_verificador)
     if codigo == numero_verificador:
+        return render_template('index18(restablecer contrasena).html')
+    else:
+        return render_template ('index19(codigo incorrecto).html')
+
         
 
 

@@ -37,7 +37,7 @@ def contacto():
         cur.execute('SELECT * FROM usuarios WHERE email = %s', 
         (email,))
         cuenta = cur.fetchall()
-        print(cuenta)
+        #print(cuenta)
         if cuenta:
             return render_template('index15(correo ya existe).html')
         else:
@@ -157,34 +157,42 @@ def verificar_usuario():
 @app.route('/lista_tareas')
 def lista_tareas():
     return render_template('index7(lista_tareas).html')
+
+
 # solo redirige a un html luego de presionar que se le ha olvidado la contraseña
 @app.route('/redirigir_rest_contrasena')
 def redirigir():
     return render_template('index16(pide correo para restablecer contra).html')
 
-def numero():
-    numero_verificador= str(randint(1000,9999))
-    return numero_verificador
 
-# le envia el codigo de verificacion al correo
-#while flag==1:
+
 def numero():
     numero_verificador= str(randint(1000,9999))
     return numero_verificador
 verificador=numero()
 
+
+# le envia el codigo de verificacion al correo
 @app.route('/enviar_correo_para_restablecer', methods=['POST'])
-def restablecer_pw():
+def envia_correo_pw():
     numero_verificador=verificador
     print(numero_verificador)
     mensaje = 'tu numero verificador es ' + numero_verificador
     correo_1= request.form.get('correo_restablecer')
+    print(correo_1)
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT id FROM usuarios WHERE email = %s', 
+    [correo_1])
+    cuenta = cur.fetchone()
+    print(cuenta)
+    session['id'] = cuenta[0]
+    print(session['id'])
     server = smtplib.SMTP('smtp.gmail.com', 587) #aqui me conecto al 'servidor' de gmail
     server.starttls()
     server.login('mite.tu.acompanante@gmail.com', 'Miteproyecto')
     server.sendmail('mite.tu.acompanante@gmail.com', correo_1, mensaje)
     server.quit()
-    return render_template('index17(verificar codigo).html'), numero_verificador
+    return render_template('index17(verificar codigo).html')
 
 
 # verifica si el codigo ingresado es el correcto
@@ -192,18 +200,24 @@ def restablecer_pw():
 def verificar_codigo():
     codigo = request.args.get('codigo_ingresado')
     numero_verificador = verificador
-    
     print(codigo)
     if codigo == numero_verificador:
-        #flag = 0
         return render_template('index18(restablecer contrasena).html')
     else:
         return render_template ('index19(codigo incorrecto).html')
 
-    #flag=0
-        
-
-
+@app.route('/cambiar_contrasena', methods=['POST'])
+def cambiar_pw():  
+    nueva_pw = request.form.get('nueva_contrasena')
+    nueva_pw_1= request.form.get('nueva_contrasena_2')
+    if nueva_pw == nueva_pw_1:
+        cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cur.execute("UPDATE usuarios SET password= %s, WHERE id= %s",
+        ([nueva_pw], session['id']))
+        mysql.connection.commit()
+        return render_template('index2(inicio sesion).html')
+    else:
+        return render_template('index20(las pw no coinciden).html')
 
 
 

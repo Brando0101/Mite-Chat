@@ -2,7 +2,12 @@
 
 {%block body%}
 
-<p> aqui se cambia la pw</p>
+<form action="{{ url_for('cambiar_pw') }}" method="post">
+
+    <input type="password" name="nueva_contrasena" placeholder="ingrese su nueva contrasena" required>
+    <input type="password" name="nueva_contrasena_2" placeholder="vuelva a ingresar su nueva contrasena" required>
+    <button type="submit">Enviar</button>
+</form>
 
 
 {% endblock %}

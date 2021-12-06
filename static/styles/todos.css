@@ -1,0 +1,33 @@
+body {
+  background-image: url(../images/fondo.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.foto1 {
+  margin-left: 380px;
+  margin-top: -230px;  
+}
+
+
+.foto2 {
+  margin-top: 50px;
+  margin-left: -10px;
+}
+
+.foto3 {
+  margin-left: 485px;
+  margin-top: -140px;
+}
+
+.foto4 {
+  margin-top: -120px;
+  margin-left: -10px;
+}
+
+.foto5 {
+  margin-left: 1155px;
+  margin-top: -177px;
+}

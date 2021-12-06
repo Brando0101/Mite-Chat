@@ -1,27 +1,41 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CHAT BOT</title>
+    <meta charset="utf-8">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/todos.css') }}">
+</head>
+<body>
+    <div class="foto1">
+        <a href="{{ url_for('chat') }}">
+        <img src="/static/images/chatear.png" width="600px">
+        </a>
+    </div>
 
-{%block body%}
+    <div class="foto2">
+        <a href="{{ url_for('psicologos') }}">
+        <img src="/static/images/boton_psicologos.png" width="300px">
+        </a><br></br>
+    </div>
 
-<a href="{{ url_for('boton_panico') }}">
-    <img src="/static/images/boton.png" width="400px">
-</a><br><br>
+    <div class="foto3">
+        <a href="{{ url_for('boton_panico') }}">
+        <img src="/static/images/boton.png" width="380px"> 
+        </a>
+    </div>
 
-<a href="{{ url_for('ajustes') }}">
-    <img src="/static/images/ajustes.png" width="400px">
-</a><br><br>
+    <div class="foto4">
+        <a href="{{ url_for('lista_tareas') }}">
+        <img src="/static/images/tareas.png" width="300px">
+        </a>
+    </div>
 
-<a href="{{ url_for('chat') }}">
-    <img src="/static/images/chatear.png" width="400px">
-</a><br><br>
-
-<a href="{{ url_for('psicologos') }}">
-    <img src="/static/images/boton_psicologos.png" width="400px">
-</a><br><br>
-
-<a href="{{ url_for('lista_tareas') }}">
-    <img src="/static/images/tareas.png" width="400px">
-</a>
+    <div class="foto5">
+        <a href="{{ url_for('ajustes') }}">
+        <img src="/static/images/ajustes.png" width="200px">
+        </a>
+    </div>
 
 
-
-{%endblock%}
+</body>
+</html>

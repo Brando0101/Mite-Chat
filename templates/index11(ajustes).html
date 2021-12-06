@@ -9,7 +9,18 @@
     <a href="{{ url_for('redirigir_menuprincipal') }}">
         <img src="/static/images/boton retroceder.png">
     </a><br>
-    <p>aqui van los ajustes</p>
+    <p>Presiona el botón para cerrar sesion</p>
+    <form action="{{ url_for('deslogearse') }}">
+        <button type="submit">Cerrar sesion</button>
+    </form><br>
+    <p>Presiona el botón para cambiar contraeña</p>
+    <form action="{{ url_for('redirigir_cambiopw') }}">
+        <button type="submit">Cambiar contraseña</button>
+    </form><br>
+    <p>Presiona el botón para cambiar los que esta guardado en el boton de panico (se cambiara todo)</p>
+    <form action="{{ url_for('redirigir_cambioboton') }}">
+        <button type="submit">Cambiar lo guardado</button>
+    </form><br>
 
 </body>
 </html>

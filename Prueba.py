@@ -79,7 +79,7 @@ def transformar_foto_binario(foto):
 def guardar_datos_boton():  
     foto_0= request.files['foto']
     filename = foto_0.filename
-    print(filename)
+    #print(filename)
     foto_0.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     foto1 = transformar_foto_binario(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     url= request.form.get('cancion')
@@ -137,6 +137,7 @@ def verificar_usuario():
         cur.execute('SELECT * FROM usuarios WHERE password = %s AND email = %s', 
         (contrasena, correo))
         cuenta = cur.fetchone()
+
         if cuenta:
             session['loggedin'] = True
             session['id'] = cuenta['id']
@@ -210,12 +211,37 @@ def cambiar_pw():
     else:
         return render_template('index20(las pw no coinciden).html')
 
+
+# cambio de contraseña cuando se esta dentro del sistema (ya se esta logeado)
+@app.route('/cambiar_contrasena_dentro', methods=['POST'])
+def cambiar_pw_dentrosistema():  
+    nueva_pw = request.form.get('nueva_contrasena')
+    nueva_pw_1= request.form.get('nueva_contrasena_2')
+    if nueva_pw == nueva_pw_1:
+        cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cur.execute("UPDATE usuarios SET password= %s WHERE id= %s",
+        ([nueva_pw], session['id']))
+        mysql.connection.commit()
+        return render_template('index3(menu principal).html')
+    else:
+        return render_template('index23(las pw no coinciden, dentro sistema).html')
+
+
+
 # redirige al menu principal cuando se clickea el boton de retroceder
 @app.route('/redirigir_menuprincipal')
 def redirigir_menuprincipal():
     return render_template ('index3(menu principal).html')
 
+# redirige para cambiar contraseña (desde ajustes)
+@app.route('/redirigir_cambiopw')
+def redirigir_cambiopw():
+    return render_template('index22(cambio pw dentro).html')
 
+# redirige para cambiar lo que se tiene en el boton de panico
+@app.route('/redirigir_cambioboton')
+def redirigir_cambioboton():
+    return render_template('index5(boton panico primera vez).html')
 
 # lista de tareas
 lista=list()
@@ -232,6 +258,15 @@ def anadir_tarea():
         tarea = request.form.get('nueva_tarea')
         lista.append(tarea)
         return redirect(url_for('lista_tareas'))
+
+# cerrar sesion
+@app.route('/deslogearse')
+def deslogearse():
+    session.pop('loggedin', None)
+    session.pop('id', None)
+    session.pop('username', None)
+    return render_template('index2(inicio sesion).html')
+
 
 
 

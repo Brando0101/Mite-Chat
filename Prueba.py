@@ -222,17 +222,16 @@ lista=list()
 
 @app.route('/lista_tareas')
 def lista_tareas():
-
-    return render_template('index7(lista_tareas).html')
+    return render_template('index7(lista_tareas).html', lista_1= lista)
 
 @app.route('/anadir_tarea', methods= ['GET', 'POST'])
 def anadir_tarea():
     if request.method == 'GET':
-        return render_template('index21(añadir tareas).html')
+        return render_template('index21(anadir tarea).html')
     else:
         tarea = request.form.get('nueva_tarea')
         lista.append(tarea)
-        return render_template('index7(lista_tareas).html', lista_1 = lista)
+        return redirect(url_for('lista_tareas'))
 
 
 

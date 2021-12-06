@@ -180,12 +180,12 @@ def envia_correo_pw():
     mensaje = 'tu numero verificador es ' + numero_verificador
     correo_1= request.form.get('correo_restablecer')
     print(correo_1)
-    cur = mysql.connection.cursor()
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cur.execute('SELECT id FROM usuarios WHERE email = %s', 
     [correo_1])
     cuenta = cur.fetchone()
     print(cuenta)
-    session['id'] = cuenta[0]
+    session['id'] = cuenta['id']
     print(session['id'])
     server = smtplib.SMTP('smtp.gmail.com', 587) #aqui me conecto al 'servidor' de gmail
     server.starttls()
@@ -212,7 +212,7 @@ def cambiar_pw():
     nueva_pw_1= request.form.get('nueva_contrasena_2')
     if nueva_pw == nueva_pw_1:
         cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cur.execute("UPDATE usuarios SET password= %s, WHERE id= %s",
+        cur.execute("UPDATE usuarios SET password= %s WHERE id= %s",
         ([nueva_pw], session['id']))
         mysql.connection.commit()
         return render_template('index2(inicio sesion).html')

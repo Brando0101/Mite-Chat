@@ -6,6 +6,10 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/lista_tareas.css') }}">
 </head>
 <body>
+
+    <a href="{{ 'redirigir_menuprincipal' }}">
+        <img src="/static/images/boton retroceder.png">
+    </a><br>
     <h1>Lista de tareas</h1>
 
     <a href="{{ url_for('boton_panico') }}">

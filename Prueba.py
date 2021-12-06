@@ -221,6 +221,10 @@ def cambiar_pw():
     else:
         return render_template('index20(las pw no coinciden).html')
 
+@app.route('/redirigir_menuprincipal')
+def redirigir_menuprincipal():
+    render_template ('index3(menu principal).html')
+
 
 
 if __name__=='__main__':

@@ -6,6 +6,7 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/ajustes.css') }}">
 </head>
 <body>
+    
     <div class="atras">
         <a href="{{ url_for('redirigir_menuprincipal') }}">
             <img src="/static/images/boton retroceder.png" width="8%">
@@ -22,7 +23,12 @@
     <p>Presiona el botón para cambiar los que esta guardado en el boton de panico (se cambiara todo)</p>
     <form action="{{ url_for('redirigir_cambioboton') }}">
         <button type="submit">Cambiar lo guardado</button>
-    </form><br>
+    </form>
+    <div class="megaboton">
+        <a href="{{ url_for('boton_panico') }}">
+            <img src="/static/images/boton.png" width="10%"; position=fixed>
+        </a>
+    </div>
 
 </body>
 </html>

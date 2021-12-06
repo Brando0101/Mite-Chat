@@ -6,9 +6,11 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/ajustes.css') }}">
 </head>
 <body>
-    <a href="{{ url_for('redirigir_menuprincipal') }}">
-        <img src="/static/images/boton retroceder.png">
-    </a><br>
+    <div class="atras">
+        <a href="{{ url_for('redirigir_menuprincipal') }}">
+            <img src="/static/images/boton retroceder.png" width="8%">
+        </a>
+    </div>
     <p>Presiona el botón para cerrar sesion</p>
     <form action="{{ url_for('deslogearse') }}">
         <button type="submit">Cerrar sesion</button>

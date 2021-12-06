@@ -167,9 +167,15 @@ def numero():
     return numero_verificador
 
 # le envia el codigo de verificacion al correo
+#while flag==1:
+def numero():
+    numero_verificador= str(randint(1000,9999))
+    return numero_verificador
+verificador=numero()
+
 @app.route('/enviar_correo_para_restablecer', methods=['POST'])
 def restablecer_pw():
-    numero_verificador= numero()
+    numero_verificador=verificador
     print(numero_verificador)
     mensaje = 'tu numero verificador es ' + numero_verificador
     correo_1= request.form.get('correo_restablecer')
@@ -181,18 +187,20 @@ def restablecer_pw():
     return render_template('index17(verificar codigo).html'), numero_verificador
 
 
-
 # verifica si el codigo ingresado es el correcto
 @app.route('/verificar')
 def verificar_codigo():
-    codigo = request.form.get('codigo_ingresado')
-    numero_verificador = numero()
-    print(numero_verificador)
+    codigo = request.args.get('codigo_ingresado')
+    numero_verificador = verificador
+    
+    print(codigo)
     if codigo == numero_verificador:
+        #flag = 0
         return render_template('index18(restablecer contrasena).html')
     else:
         return render_template ('index19(codigo incorrecto).html')
 
+    #flag=0
         
 
 

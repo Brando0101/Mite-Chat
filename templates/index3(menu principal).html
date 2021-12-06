@@ -4,38 +4,40 @@
     <title>CHAT BOT</title>
     <meta charset="utf-8">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/todos.css') }}">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
-    <div class="foto1">
-        <a href="{{ url_for('chat') }}">
-        <img src="/static/images/chatear.png" width="600px">
-        </a>
-    </div>
+    <div class="contenedor">
+        <div class="foto1">
+            <a href="{{ url_for('chat') }}">
+            <img src="/static/images/chatear.png" width="65%">
+            </a>
+        </div>
 
-    <div class="foto2">
-        <a href="{{ url_for('psicologos') }}">
-        <img src="/static/images/boton_psicologos.png" width="300px">
-        </a><br></br>
-    </div>
+        <div class="foto2">
+            <a href="{{ url_for('psicologos') }}">
+            <img src="/static/images/boton_psicologos.png" width="23%">
+            </a><br></br>
+        </div>
 
-    <div class="foto3">
-        <a href="{{ url_for('boton_panico') }}">
-        <img src="/static/images/boton.png" width="380px"> 
-        </a>
-    </div>
+        <div class="foto3">
+            <a href="{{ url_for('boton_panico') }}">
+            <img src="/static/images/boton.png" width="40%"> 
+            </a>
+        </div>
 
-    <div class="foto4">
-        <a href="{{ url_for('lista_tareas') }}">
-        <img src="/static/images/tareas.png" width="300px">
-        </a>
-    </div>
+        <div class="foto4">
+            <a href="{{ url_for('lista_tareas') }}">
+            <img src="/static/images/tareas.png" width="23%">
+            </a>
+        </div>
 
-    <div class="foto5">
-        <a href="{{ url_for('ajustes') }}">
-        <img src="/static/images/ajustes.png" width="200px">
-        </a>
+        <div class="foto5">
+            <a href="{{ url_for('ajustes') }}">
+            <img src="/static/images/ajustes.png" width="100%">
+            </a>
+        </div>
     </div>
-
 
 </body>
 </html>

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body%}
+<a href="{{ url_for('redirigir_menuprincipal') }}">
+    <img src="/static/images/boton retroceder.png">
+</a>
+
+<h1>Agregar tarea</h1><br>
+
+
+<form action="{{ url_for('anadir_tareas') }}" method="post">
+    <input type="text" name='nueva_tarea' placeholder="Agrega tu tarea" required>
+    <button type="submit">Enviar</button>
+</form>
+
+
+
+{% endblock %}

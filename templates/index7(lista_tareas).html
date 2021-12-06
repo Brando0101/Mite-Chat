@@ -7,10 +7,20 @@
 </head>
 <body>
 
-    <a href="{{ 'redirigir_menuprincipal' }}">
+    <a href="{{ url_for('redirigir_menuprincipal') }}">
         <img src="/static/images/boton retroceder.png">
     </a><br>
     <h1>Lista de tareas</h1>
+
+    <ul>
+        <li></li>
+    </ul><br><br>
+
+    <a href="{{ url_for('anadir_tarea') }}">Agregar nueva tarea</a>
+
+
+
+
 
     <a href="{{ url_for('boton_panico') }}">
         <img src="/static/images/boton.png" width="200px"; position=fixed>

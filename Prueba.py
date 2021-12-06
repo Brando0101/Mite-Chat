@@ -20,7 +20,7 @@ app.config['MYSQL_PASSWORD']= ''
 app.config['MYSQL_DB']= 'chat_bot2' 
 mysql= MySQL(app)
 
-lista=list()
+
 # inicio de sesion
 @app.route('/')
 def index():
@@ -63,6 +63,7 @@ def boton_panico():
             return redirect(url_for('mostrar_guardado_boton_panico'))
 
 #boton de panico para agregar tu cosas; ya que no deberia preguntarte si es primera vez que entras al boton de panico al haber iniciado sesion.
+# ya no se utiliza esta ruta
 @app.route('/primera_vez_boton')
 def primera_vez_boton_panico():
     return render_template('index5(boton panico primera vez).html')
@@ -88,15 +89,8 @@ def guardar_datos_boton():
     mysql.connection.commit()
     return render_template('index3(menu principal).html')    
 
-# funcion que vuelve el archivo blob a imagen (.jpg o .png)
-#def transformar_foto(imagen):
-    #foto_a_dar = src'./salir.jpg'
-    with open(foto_a_dar, 'wb') as file:
-        foto_final = file.write(imagen)
-    return foto_final
     
-
-# boton de panico cuando ya se han agregado las cosas
+# Muestra lo que se ha guardado en el boton de panico
 @app.route('/guardado_boton')
 def mostrar_guardado_boton_panico():
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
@@ -118,7 +112,7 @@ def mostrar_guardado_boton_panico():
 def crear_cuenta():
     return render_template('index9(crear cuenta).html')
 
-# dialogos del bot
+# chat bot como tal (Mite)
 @app.route('/chat')
 def chat():
     return render_template('index10(chatbot).html')
@@ -152,13 +146,6 @@ def verificar_usuario():
         else:
             return render_template('index14(error datos ingresados).html')
 
-        
-    #return render_template('index13(verificacion de usuario).html')
-
-# lista de tareas
-@app.route('/lista_tareas')
-def lista_tareas():
-    return render_template('index7(lista_tareas).html')
 
 
 # solo redirige a un html luego de presionar que se le ha olvidado la contraseña
@@ -167,7 +154,7 @@ def redirigir():
     return render_template('index16(pide correo para restablecer contra).html')
 
 
-
+# Funcion que crea un numero al azar, que posteriormente sera enviado al correo para restablecer la contraseña
 def numero():
     numero_verificador= str(randint(1000,9999))
     return numero_verificador
@@ -208,6 +195,8 @@ def verificar_codigo():
     else:
         return render_template ('index19(codigo incorrecto).html')
 
+
+# aqui el usuario ingresa su nueva contraseña, y esta se cambia por la antigua en la base de datos
 @app.route('/cambiar_contrasena', methods=['POST'])
 def cambiar_pw():  
     nueva_pw = request.form.get('nueva_contrasena')
@@ -221,9 +210,32 @@ def cambiar_pw():
     else:
         return render_template('index20(las pw no coinciden).html')
 
+# redirige al menu principal cuando se clickea el boton de retroceder
 @app.route('/redirigir_menuprincipal')
 def redirigir_menuprincipal():
-    render_template ('index3(menu principal).html')
+    return render_template ('index3(menu principal).html')
+
+
+
+# lista de tareas
+lista=list()
+
+@app.route('/lista_tareas')
+def lista_tareas():
+
+    return render_template('index7(lista_tareas).html')
+
+@app.route('/anadir_tarea', methods= ['GET', 'POST'])
+def anadir_tarea():
+    if request.method == 'GET':
+        return render_template('index21(añadir tareas).html')
+    else:
+        tarea = request.form.get('nueva_tarea')
+        lista.append(tarea)
+        return render_template('index7(lista_tareas).html', lista_1 = lista)
+
+
+
 
 
 

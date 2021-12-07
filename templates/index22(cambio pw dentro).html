@@ -6,11 +6,13 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/reestablecer.css') }}">
 </head>
 <body>
-    <form action="{{ url_for('cambiar_pw_dentrosistema') }}" method="post">
-
-        <input type="password" name="nueva_contrasena" placeholder="ingrese su nueva contrasena" required>
-        <input type="password" name="nueva_contrasena_2" placeholder="vuelva a ingresar su nueva contrasena" required>
-        <button type="submit">Enviar</button>
-    </form>
+    <section class="form-register">  
+        <form action="{{ url_for('cambiar_pw_dentrosistema') }}" method="post">
+            <h1>Crea una nueva contrasena</h1>
+            <input input class="controls" type="password" name="nueva_contrasena" placeholder="Ingrese su nueva contrasena" required>
+            <input input class="controls" type="password" name="nueva_contrasena_2" placeholder="Vuelva a ingresar su nueva contrasena" required>
+            <button class="button" type="submit">Enviar</button>
+        </form>
+    </section>
 </body>
 </html>

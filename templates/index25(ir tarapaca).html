@@ -17,13 +17,11 @@
         <h2>Psicólogos cerca de tu zona</h2>
     </section>
 
-    <iframe src="https://www.google.com/maps/d/embed?mid=1-P-z2hagJ8aDuSEhcj9FkpAIUSJR95F2&hl=es&ehbc=2E312F" width="640" height="480"></iframe>
+    <iframe src="https://www.google.com/maps/d/u/2/embed?mid=1gqcKLRemE7NN9U0j5nw3DjK9u_i2MqCB&ehbc=2E312F" width="640" height="480"></iframe>
+
 
     <form action="{{ url_for('ir_arica') }}">
         <button type="submit">Arica y Parinacota</button>
-    </form><br>
-    <form action="{{ url_for('ir_tarapaca') }}">
-        <button type="submit">Tarapacá</button>
     </form><br>
     <form action="{{ url_for('ir_antofagasta') }}">
         <button type="submit">Antofagasta</button>
@@ -33,6 +31,9 @@
     </form><br>
     <form action="{{ url_for('ir_coquimbo') }}">
         <button type="submit">Coquimbo</button>
+    </form><br>
+    <form action="{{ url_for('psicologos') }}">
+        <button type="submit">Valparaíso</button>
     </form><br>
     <form action="{{ url_for('ir_metropolitana') }}">
         <button type="submit">Metropolitana</button>

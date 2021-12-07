@@ -17,7 +17,8 @@
         <h2>Psicólogos cerca de tu zona</h2>
     </section>
 
-    <iframe src="https://www.google.com/maps/d/embed?mid=1-P-z2hagJ8aDuSEhcj9FkpAIUSJR95F2&hl=es&ehbc=2E312F" width="640" height="480"></iframe>
+    <iframe src="https://www.google.com/maps/d/u/2/embed?mid=1chmJ6Iz4LHQWeSLZSXwOiM0FDE5smCTd&ehbc=2E312F" width="640" height="480"></iframe>
+
 
     <form action="{{ url_for('ir_arica') }}">
         <button type="submit">Arica y Parinacota</button>
@@ -33,6 +34,9 @@
     </form><br>
     <form action="{{ url_for('ir_coquimbo') }}">
         <button type="submit">Coquimbo</button>
+    </form><br>
+    <form action="{{ url_for('psicologos') }}">
+        <button type="submit">Valparaiso</button>
     </form><br>
     <form action="{{ url_for('ir_metropolitana') }}">
         <button type="submit">Metropolitana</button>
@@ -51,9 +55,6 @@
     </form><br>
     <form action="{{ url_for('ir_araucania') }}">
         <button type="submit">Araucanía</button>
-    </form><br>
-    <form action="{{ url_for('ir_losrios') }}">
-        <button type="submit">Los Ríos</button>
     </form><br>
     <form action="{{ url_for('ir_loslagos') }}">
         <button type="submit">Los lagos</button>

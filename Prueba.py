@@ -127,6 +127,74 @@ def ajustes():
 def psicologos():
     return render_template('index12(lista psicologos).html')
 
+
+@app.route('/redirigir_arica')
+def ir_arica():
+    return render_template('index24(ir arica).html')
+@app.route('/redirigir_tarapaca')
+def ir_tarapaca():
+    return render_template('index25(ir tarapaca).html')
+@app.route('/redirigir_antofagasta')
+def ir_antofagasta():
+    return render_template('index26(ir antofagasta).html')
+@app.route('/redirigir_atacama')
+def ir_atacama():
+    return render_template('index27(ir atacama).html')
+@app.route('/redirigir_coquimbo')
+def ir_coquimbo():
+    return render_template('index28(ir coquimbo).html')
+@app.route('/redirigir_metropolitana')
+def ir_metropolitana():
+    return render_template('index29(ir metropolitana).html')
+@app.route('/redirigir_ohiggins')
+def ir_ohiggins():
+    return render_template('index30(ir ohiggins).html')
+@app.route('/redirigir_maule')
+def ir_maule():
+    return render_template('index31(ir maule).html')
+@app.route('/redirigir_nuble')
+def ir_nuble():
+    return render_template('index32(ir nuble).html')
+@app.route('/redirigir_biobio')
+def ir_biobio():
+    return render_template('index33(ir biobio).html')
+@app.route('/redirigir_araucania')
+def ir_araucania():
+    return render_template('index34(ir araucania).html')
+@app.route('/redirigir_losrios')
+def ir_losrios():
+    return render_template('index35(ir losrios).html')
+@app.route('/redirigir_loslagos')
+def ir_loslagos():
+    return render_template('index36(ir loslagos).html')
+@app.route('/redirigir_aysen')
+def ir_aysen():
+    return render_template('index37(ir aysen).html')
+@app.route('/redirigir_magallanes')
+def ir_magallanes():
+    return render_template('index38(ir magallanes).html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #verificar si el usuario esta en la base de datos
 @app.route('/verificacion', methods= ['POST'])
 def verificar_usuario():
@@ -266,6 +334,8 @@ def deslogearse():
     session.pop('id', None)
     session.pop('username', None)
     return render_template('index2(inicio sesion).html')
+
+
 
 
 

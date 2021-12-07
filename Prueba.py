@@ -127,6 +127,7 @@ def ajustes():
 def psicologos():
     return render_template('index12(lista psicologos).html')
 
+# Solo rutas para poder ir a ver psicologos cerca en cada region
 
 @app.route('/redirigir_arica')
 def ir_arica():
@@ -173,25 +174,6 @@ def ir_aysen():
 @app.route('/redirigir_magallanes')
 def ir_magallanes():
     return render_template('index38(ir magallanes).html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

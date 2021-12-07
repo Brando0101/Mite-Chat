@@ -13,57 +13,66 @@
         </a>
     </div>
 
+
     <section class="form-register">
         <h2>Psicólogos cerca de tu zona</h2>
+        <div class="mapa">
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=17TSgCyIfuLlIP5MHxxo6XjqxPMI-FdZv&ehbc=2E312F" width="640" height="480"></iframe> 
+        </div>
+
+        <div class="botones1">
+            <form action="{{ url_for('ir_arica') }}">
+                <input class="botons" button type="submit" value="Arica y Parinacota"</button>
+            </form>
+            <form action="{{ url_for('ir_tarapaca') }}">
+                <input class="botons" button type="submit" value="Tarapacá"</button>
+            </form>
+            <form action="{{ url_for('ir_antofagasta') }}">
+                <input class="botons" button type="submit" value="Antofagasta"</button>
+            </form>
+            <form action="{{ url_for('ir_atacama') }}">
+                <input class="botons" button type="submit" value="Atacama"</button>
+            </form>
+            <form action="{{ url_for('ir_coquimbo') }}">
+                <input class="botons" button type="submit" value="Coquimbo"</button>
+            </form>
+            <form action="{{ url_for('psicologos') }}">
+                <input class="botons" button type="submit" value="Valparaíso"</button>
+            </form>
+            <form action="{{ url_for('ir_metropolitana') }}">
+                <input class="botons" button type="submit" value="Metropolitana"</button>
+            </form>
+            <form action="{{ url_for('ir_ohiggins') }}">
+                <input class="botons" button type="submit" value="O'higgins"</button>
+            </form>
+        </div>
+        <div class="botones2"> 
+            <form action="{{ url_for('ir_maule') }}">
+                <input class="botons" button type="submit" value="Maule"></button>
+            </form>
+            <form action="{{ url_for('ir_nuble') }}">
+                <input class="botons" button type="submit" value="Nuble"</button>
+            </form>
+            <form action="{{ url_for('ir_biobio') }}">
+                <input class="botons" button type="submit" value="Bío-Bío"</button>
+            </form>
+            <form action="{{ url_for('ir_araucania') }}">
+                <input class="botons" button type="submit" value="Araucanía"</button>
+            </form>
+            <form action="{{ url_for('ir_losrios') }}">
+                <input class="botons" button type="submit" value="Los Ríos"</button>
+            </form>
+            <form action="{{ url_for('ir_loslagos') }}">
+                <input class="botons" button type="submit" value="Los Lagos"</button>
+            </form>
+            <form action="{{ url_for('ir_aysen') }}">
+                <input class="botons" button type="submit" value="Aysén"</button>
+            </form>
+            <form action="{{ url_for('ir_magallanes') }}">
+                <input class="botons" button type="submit" value="Magallanes y Antártica Chilena"</button>
+            </form>
+        </div>
     </section>
-
-    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=17TSgCyIfuLlIP5MHxxo6XjqxPMI-FdZv&ehbc=2E312F" width="640" height="480"></iframe> 
-
-    <form action="{{ url_for('ir_arica') }}">
-        <button type="submit">Arica y Parinacota</button>
-    </form><br>
-    <form action="{{ url_for('ir_tarapaca') }}">
-        <button type="submit">Tarapacá</button>
-    </form><br>
-    <form action="{{ url_for('ir_antofagasta') }}">
-        <button type="submit">Antofagasta</button>
-    </form><br>
-    <form action="{{ url_for('ir_atacama') }}">
-        <button type="submit">Atacama</button>
-    </form><br>
-    <form action="{{ url_for('ir_coquimbo') }}">
-        <button type="submit">Coquimbo</button>
-    </form><br>
-    <form action="{{ url_for('psicologos') }}">
-        <button type="submit">Valparaiso</button>
-    </form><br>
-    <form action="{{ url_for('ir_metropolitana') }}">
-        <button type="submit">Metropolitana</button>
-    </form><br>
-    <form action="{{ url_for('ir_ohiggins') }}">
-        <button type="submit">O'higgins</button>
-    </form><br>
-    <form action="{{ url_for('ir_maule') }}">
-        <button type="submit">Maule</button>
-    </form><br>
-    <form action="{{ url_for('ir_biobio') }}">
-        <button type="submit">Bío-Bío</button>
-    </form><br>
-    <form action="{{ url_for('ir_araucania') }}">
-        <button type="submit">Araucanía</button>
-    </form><br>
-    <form action="{{ url_for('ir_losrios') }}">
-        <button type="submit">Los Ríos</button>
-    </form><br>
-    <form action="{{ url_for('ir_loslagos') }}">
-        <button type="submit">Los lagos</button>
-    </form><br>
-    <form action="{{ url_for('ir_aysen') }}">
-        <button type="submit">Aysén</button>
-    </form><br>
-    <form action="{{ url_for('ir_magallanes') }}">
-        <button type="submit">Magallanes y Antártica Chilena</button>
-    </form><br>
 
     <div class="megaboton">
         <a href="{{ url_for('boton_panico') }}">

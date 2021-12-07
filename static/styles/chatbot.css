@@ -19,8 +19,8 @@
   }
 
   .megaboton {
-    margin-left: 0.5%;
-    margin-top: 26%; 
+    margin-left: 1%;
+    margin-top: -1%; 
   }
 
   .form-register h2 {
@@ -30,4 +30,33 @@
     margin-left: 38%;
     margin-top: -5%;
     text-shadow: 1px 2px 2px #000;
+  }
+
+
+  .form-register h4 {
+    font-family: Gabriola;
+    color: #ffffff;
+    font-size: 35px;
+    margin-left: 14%;
+    margin-top: 2%;
+    text-shadow: 1px 2px 2px #000;
+  }
+  .form-register h1 {
+    font-family: Gabriola;
+    color: #ffffff;
+    font-size: 35px;
+    margin-left: 2%;
+    margin-top: 0%;
+    text-shadow: 1px 2px 2px #000;
+  }
+
+  .form-register h3 {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: justify;
+    width: 50%;
+    color: #ffffff;
+    font-size: 20px;
+    margin-left: 5%;
+    margin-top: 2%;
+    text-shadow: 1px 1px 2px #000;
   }

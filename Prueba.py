@@ -37,14 +37,22 @@ def contacto():
         cur.execute('SELECT * FROM usuarios WHERE email = %s', 
         (email,))
         cuenta = cur.fetchall()
-        #print(cuenta)
+        print(cuenta)
         if cuenta:
             return render_template('index15(correo ya existe).html')
         else:
-            cur.execute('INSERT INTO usuarios (name, password, email) VALUES (%s, %s, %s)',
-            (nombre, contrasena, email,))
+            cur.execute('INSERT INTO usuarios (name, password, email, numero) VALUES (%s, %s, %s, %s)',
+            (nombre, contrasena, email, 0,))
             mysql.connection.commit()
-        session['id'] = cur.lastrowid #last row id =  id de la ultima fila
+            cur.execute('SELECT * FROM usuarios WHERE email = %s', 
+            (email,))
+            cuenta = cur.fetchall()
+            print(cuenta)
+            session['numero'] = cuenta[0]['numero']
+            session['loggedin'] = True
+        print(session['numero'])
+        session['id'] = cuenta[0]['id'] 
+        print(session['id'])
         return render_template('index3(menu principal).html', name= nombre)
 
 # boton de panico principal
@@ -53,7 +61,7 @@ def boton_panico():
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cur.execute('SELECT photo, enlaces FROM usuarios WHERE id = %s',
     (session['id'],))
-    #print(session['id'])
+    print(session['id'])
     cuenta = cur.fetchall()
     #print(cuenta)
     for datos in cuenta:
@@ -97,15 +105,21 @@ def mostrar_guardado_boton_panico():
     cur.execute('SELECT photo, enlaces FROM usuarios WHERE id = %s',
     (session['id'],))
     cuenta = cur.fetchall()
+    numero_sesion= str(session['numero'])
     for datos in cuenta:
         foto_bd = datos['photo']
-        with open('static/salir.jpg', 'wb') as file:
+        with open('static/salir'+numero_sesion+'.jpg', 'wb') as file:
             foto_final = file.write(foto_bd)
         url_final = datos['enlaces']
     url_final_cambiada=url_final.replace("watch?v=","embed/")
     url_final_cambiada+= "?autoplay=1"
     print(url_final_cambiada)
-    return render_template("index6(guardado_boton).html", foto_mostrar = foto_final, url_salida = url_final_cambiada)
+    ruta_foto = 'static/salir'+numero_sesion+'.jpg'
+    session['numero']+=1
+    cur.execute("UPDATE usuarios SET numero= %s",
+    (session['numero'],))
+    mysql.connection.commit()
+    return render_template("index6(guardado_boton).html", nombre_foto = ruta_foto, url_salida = url_final_cambiada)
 
 # ruta para ingresar los datos, que luego se enviaran al /contacto
 @app.route('/crear_cuenta')
@@ -188,11 +202,12 @@ def verificar_usuario():
         cur.execute('SELECT * FROM usuarios WHERE password = %s AND email = %s', 
         (contrasena, correo))
         cuenta = cur.fetchone()
-
+        #print(cuenta)
         if cuenta:
             session['loggedin'] = True
             session['id'] = cuenta['id']
-
+            session['numero']= cuenta['numero']
+            print(session['numero'])
             session['fullname'] = cuenta['name']
             return render_template('index3(menu principal).html')
         else:

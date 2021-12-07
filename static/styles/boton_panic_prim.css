@@ -50,7 +50,7 @@
     font-family: 'calibri';
     font-size: 18px;
     margin-left: 2%;
-    color: white;
+    color: rgb(255, 255, 255);
   }
 
 
@@ -63,7 +63,7 @@
     font-family: 'calibri';
     font-size: 18px;
     margin-left: 2%;
-    color: white;
+    color: rgb(0, 0, 0);
   }
 
   #texto1 {

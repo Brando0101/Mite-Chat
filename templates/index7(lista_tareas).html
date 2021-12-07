@@ -17,12 +17,14 @@
         <h1>Lista de tareas</h1>
     </section>
 
-    <ul>
-        {% for tarea in lista_1 %}
-        <li>{{ tarea }}</li>
-        {% endfor %}
-    </ul>
-    <br>
+    <div class="tareukas">
+        <ul>
+            {% for tarea in lista_1 %}
+            <li>{{ tarea }}</li>
+            {% endfor %}
+        </ul>
+        <br>
+    </div>
 
     <div class="nueva">
         <a href="{{ url_for('anadir_tarea') }}">Agregar nueva tarea</a>

@@ -12,17 +12,20 @@
         </a>
     </div>
 
+    <section class="form-register">
+        <h1>Ingresa una imagen y un link de youtube para configurar tu botón de pánico</h1>
 
-    <p> Se explica como funciona todo </p>
-
-    <form action="{{ url_for('guardar_datos_boton') }}" method="post" enctype="multipart/form-data">
-        <label>Adjunta tus imagenes</label>
-        <input type="file" name= "foto" placeholder="Ingresa aqui tus imagenes" required><br>
-        <label>Ingresa tus canciones</label>
-        <input type="url" name= "cancion" placeholder="Ingresa la URL" required><br><br>
-        <button type="submit">Enviar</button>
-
-    </form>
+        <div class="guardados">
+            
+            <form action="{{ url_for('guardar_datos_boton') }}" method="post" enctype="multipart/form-data">
+                <label id="texto1">Adjunta tu imagen</label>
+                <input class="control1" type="file" name= "foto" placeholder="Ingresa aqui tus imagenes" required><br>
+                <label id="texto2">Ingresa tu canción</label>
+                <input class="control2" type="url" name= "cancion" placeholder="Ingresa la URL" required><br><br>
+                <input class="botons" button type="submit"></button>
+        </div>
+        </form>
+    </section>
 
 </body>
 </html>

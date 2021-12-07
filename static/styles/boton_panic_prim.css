@@ -13,6 +13,70 @@
     background-size: cover;
   }
 
+
+  .form-register h1 {
+    font-family: Gabriola;
+    color: #ffffff;
+    font-size: 50px;
+    margin-left: 9%;
+    margin-top: -3%;
+    text-shadow: 1px 2px 2px #000;
+  }
+
+
+  .guardados {
+    margin-left: 30%;
+    margin-top: 5%;
+
+  }
+
+  .form-register .botons {
+    width: 20%;
+    background: #ffffff ;
+    border: 1px solid #1f53c5;
+    padding: 12px;
+    margin: 16px 0;
+    font-size: 16px;
+    margin-left: 0%;
+
+  }
+
+  .control1 {
+    width: 20.5%;
+    background: #ffffff;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #1f53c5;
+    font-family: 'calibri';
+    font-size: 18px;
+    margin-left: 2%;
+    color: white;
+  }
+
+
+  .control2 {
+    width: 40%;
+    background: #ffffff;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #1f53c5;
+    font-family: 'calibri';
+    font-size: 18px;
+    margin-left: 2%;
+    color: white;
+  }
+
+  #texto1 {
+    font-size: 20px;
+    font-family: 'calibri';
+  }
+
+  #texto2 {
+    font-size: 20px;
+    font-family: 'calibri';
+  }
+
+
   .atras {
     margin-left: 0%;
     margin-top: 0%; 

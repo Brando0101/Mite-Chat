@@ -11,14 +11,17 @@
             <img src="/static/images/boton retroceder.png" width="8%">
         </a>
     </div>
-    
-    <h1>Agregar tarea</h1><br>
-    
-    
-    <form action="{{ url_for('anadir_tarea') }}" method="post">
-        <input type="text" name='nueva_tarea' placeholder="Agrega tu tarea" required>
-        <button type="submit">Enviar</button>
-    </form>
+
+    <section class="form-register">
+        <h1>Agregar tarea</h1><br>
+        <div class="espacio">
+            <form action="{{ url_for('anadir_tarea') }}" method="post">
+                <input class="controls" type="text" name='nueva_tarea' placeholder="Agrega tu tarea" required>
+                <button class="botons" type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+
     <div class="megaboton">
         <a href="{{ url_for('boton_panico') }}">
             <img src="/static/images/boton.png" width="10%"; position=fixed>

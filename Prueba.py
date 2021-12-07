@@ -41,18 +41,26 @@ def contacto():
         if cuenta:
             return render_template('index15(correo ya existe).html')
         else:
-            cur.execute('INSERT INTO usuarios (name, password, email, numero) VALUES (%s, %s, %s, %s)',
-            (nombre, contrasena, email, 0,))
+            cur.execute('INSERT INTO usuarios (name, password, email) VALUES (%s, %s, %s)',
+            (nombre, contrasena, email,))
             mysql.connection.commit()
             cur.execute('SELECT * FROM usuarios WHERE email = %s', 
             (email,))
             cuenta = cur.fetchall()
             print(cuenta)
-            session['numero'] = cuenta[0]['numero']
             session['loggedin'] = True
-        print(session['numero'])
         session['id'] = cuenta[0]['id'] 
         print(session['id'])
+        cur.execute('SELECT * FROM usuarios WHERE email = %s', 
+        ('brando.marquina@usm.cl',))
+        cuenta_1 = cur.fetchall()
+        #print(cuenta_1)
+        numero_nivelar = (cuenta_1[0]['numero'])+1
+        print(numero_nivelar)
+        cur.execute("UPDATE usuarios SET numero= %s",
+        (numero_nivelar,))
+        mysql.connection.commit()
+        session['numero']= numero_nivelar
         return render_template('index3(menu principal).html', name= nombre)
 
 # boton de panico principal

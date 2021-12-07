@@ -13,8 +13,9 @@
         </a>
     </div>
 
-    
-    <h1>Lista de tareas</h1>
+    <section class="form-register">
+        <h1>Lista de tareas</h1>
+    </section>
 
     <ul>
         {% for tarea in lista_1 %}
@@ -23,7 +24,9 @@
     </ul>
     <br>
 
-    <a href="{{ url_for('anadir_tarea') }}">Agregar nueva tarea</a>
+    <div class="nueva">
+        <a href="{{ url_for('anadir_tarea') }}">Agregar nueva tarea</a>
+    </div>
 
     <div class="megaboton">
         <a href="{{ url_for('boton_panico') }}">

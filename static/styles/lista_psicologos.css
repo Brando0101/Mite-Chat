@@ -18,6 +18,15 @@
     margin-top: 0%; 
   }
 
+  .form-register h2 {
+    font-family: Gabriola;
+    color: #ffffff;
+    font-size: 50px;
+    margin-left: 34%;
+    margin-top: -5%;
+    text-shadow: 1px 2px 2px #000;
+  }
+
   .megaboton {
     margin-left: 0.5%;
     margin-top: 26%; 

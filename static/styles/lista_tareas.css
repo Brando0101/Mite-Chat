@@ -13,6 +13,22 @@
     background-size: cover;
   }
 
+  .form-register h1 {
+    font-family: Gabriola;
+    color: #ffffff;
+    font-size: 50px;
+    margin-left: 40%;
+    margin-top: -5%;
+    text-shadow: 1px 2px 2px #000;
+  }
+
+
+  .nueva {
+    margin-left: 42.5%;
+    font-size: 18px;
+    
+  }
+
   .atras {
     margin-left: 0%;
     margin-top: 0%; 

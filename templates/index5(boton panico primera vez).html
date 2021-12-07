@@ -16,7 +16,7 @@
         <h1>Ingresa una imagen y un link de youtube para configurar tu botón de pánico</h1>
 
         <div class="guardados">
-            
+            <p>El enlace que se introduce no puede ser sacado de una playlist (lista de reproducción)</p>
             <form action="{{ url_for('guardar_datos_boton') }}" method="post" enctype="multipart/form-data">
                 <label id="texto1">Adjunta tu imagen</label>
                 <input class="control1" type="file" name= "foto" placeholder="Ingresa aqui tus imagenes" required><br>

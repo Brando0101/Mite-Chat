@@ -6,10 +6,14 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/verificar_codigo.css') }}">
 </head>
 <body>
-    <form action="{{ url_for('verificar_codigo') }}">
-        <p>Ingrese el codigo que ha llegado a su correo (puede que el correo este en la carpeta de spam)</p>
-        <input type="text" name="codigo_ingresado" placeholder="ingrese su codigo verificador" required>
-        <button type="submit" class="button">Enviar</button>
-    </form>
+
+    <section class="form-register">
+        <form action="{{ url_for('verificar_codigo') }}">
+            <h1>Ingrese el código que ha llegado a su correo (si no lo encuentra en el buzón principal, puede que esté en la carpeta de spam)</h1>
+            <input class="controls" type="text" name="codigo_ingresado" placeholder="Ingrese su código verificador" required>
+            <button class="button" type="submit" class="button">Enviar</button>
+        </form>
+    </section>
+
 </body>
 </html>

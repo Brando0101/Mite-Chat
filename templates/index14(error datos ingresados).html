@@ -3,19 +3,21 @@
 <head>
     <title>CHAT BOT</title>
     <meta charset="utf-8"> 
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/error.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/estilo.css') }}">
 </head>
 <body>
-  <section class="form-register">
-    <form action="{{ url_for('verificar_usuario') }}", method="post">
-        <h2>Inicia sesión</h2>
-        <input class='controls' type="text" name="correo.inicio.sesion" placeholder="Ingresa tu correo" required><br><br>
-        <input class="controls" type="password" name="contrasena.inicio.sesion" placeholder="Ingresa tu contraseña" required><br><br>
-        <button class="button" type="submit">Login</button>
-        <p>Usuario o contraseña incorrectos</p>
-    </form>
-    
-    <a href="{{ url_for('crear_cuenta') }}">¿Nuevo/a en Mite? Crea una cuenta.</a><br><br>
-  </section>
+    <section class="form-register">
+      <form action="{{ url_for('verificar_usuario') }}", method="post">
+          <h2>Inicia sesión</h2>
+          <input class='controls' type="text" name="correo.inicio.sesion" placeholder="Ingresa tu correo" required><br><br>
+          <input class="controls" type="password" name="contrasena.inicio.sesion" placeholder="Ingresa tu contraseña" required><br><br>
+          <button class="button" type="submit">Login</button>
+          <h4>Usuario o contraseña incorrectos</h4>
+      </form>
+      
+      <a href="{{ url_for('crear_cuenta') }}">¿Nuevo/a en Mite? Crea una cuenta.</a><br><br>
+      <a href="{{ url_for('redirigir') }}">¿Olvidaste tu contraseña? Presiona aqui para recuperarla</a><br>
+    </section>
+
 </body>
 </html>

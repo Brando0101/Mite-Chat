@@ -31,7 +31,7 @@ def index():
 def contacto():
     if request.method == 'POST' and 'nombre' in request.form and 'contrasena' in request.form and 'correo' in request.form: # los and son para verificar que se ingresan datos en los espacios
         nombre= request.form.get('nombre')
-        contraseña= request.form.get('contrasena')
+        contrasena= request.form.get('contrasena')
         email= request.form.get('correo')
         cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cur.execute('SELECT * FROM usuarios WHERE email = %s', 
@@ -42,7 +42,7 @@ def contacto():
             return render_template('index15(correo ya existe).html')
         else:
             cur.execute('INSERT INTO usuarios (name, password, email) VALUES (%s, %s, %s)',
-            (nombre, contraseña, email,))
+            (nombre, contrasena, email,))
             mysql.connection.commit()
         session['id'] = cur.lastrowid #last row id =  id de la ultima fila
         return render_template('index3(menu principal).html', name= nombre)
@@ -112,10 +112,11 @@ def mostrar_guardado_boton_panico():
 def crear_cuenta():
     return render_template('index9(crear cuenta).html')
 
-# chat bot como tal (Mite)
+# chat bot como tal (Mite), primera conversacion
 @app.route('/chat')
 def chat():
     return render_template('index10(chatbot).html')
+
 
 # ajustes del bot
 @app.route('/ajustes')

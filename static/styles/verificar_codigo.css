@@ -44,3 +44,12 @@
     margin-left: 2%;
     color:#000;;
   }
+
+  .form-register h3 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-left: 2%;
+    margin-top: 0%;
+    text-shadow: 1px 1px 1px #000;
+
+  }

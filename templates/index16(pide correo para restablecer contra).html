@@ -6,11 +6,12 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/pide_correo.css') }}">
 </head>
 <body>
-    <form action="{{ url_for('envia_correo_pw') }}" method="post">
-        <p>Ingresa el correo de que usas en tu inicio de sesion, te llegara a tu correo un codigo para reestablecer la contraseña</p>
-        <input type="email" name="correo_restablecer" placeholder="ingresa tu correo" required>
-        <button class="button" type="submit">Enviar</button>
-    
-    </form>
+    <section class="form-register">
+        <form action="{{ url_for('envia_correo_pw') }}" method="post">
+            <h1>Ingresa el correo de que usas en tu inicio de sesión, te llegará a tu correo un código para reestablecer la contraseña</h1>
+            <input class="controls" type="email" name="correo_restablecer" placeholder="Ingresa tu correo" required>
+            <button class="button" type="submit">Enviar</button>
+        </form>
+    </section>
 </body>
 </html>

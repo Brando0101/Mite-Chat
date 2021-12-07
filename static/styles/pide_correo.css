@@ -12,3 +12,36 @@
     background-attachment: fixed;
     background-size: cover;
   }
+
+  .form-register .button {
+    width: 10%;
+    background: #ffffff ;
+    border: 1px solid #1f53c5;
+    padding: 12px;
+    margin: 16px 0;
+    font-size: 16px;
+
+  }
+
+  .form-register h1 {
+    font-family: 'Times New Roman', Times, serif;
+    color: #ffffff;
+    font-size: 30px;
+    margin-left: 2%;
+    margin-top: 5%;
+    text-shadow: 1px 2px 2px #000;
+  }
+
+
+    .controls {
+    width: 30%;
+    background: #ffffff;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #1f53c5;
+    font-family: 'calibri';
+    font-size: 18px;
+    margin-left: 2%;
+    color: white;
+  }
+  

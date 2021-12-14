@@ -69,7 +69,7 @@ def boton_panico():
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cur.execute('SELECT photo, enlaces FROM usuarios WHERE id = %s',
     (session['id'],))
-    print(session['id'])
+    #print(session['id'])
     cuenta = cur.fetchall()
     #print(cuenta)
     for datos in cuenta:
@@ -121,7 +121,7 @@ def mostrar_guardado_boton_panico():
         url_final = datos['enlaces']
     url_final_cambiada=url_final.replace("watch?v=","embed/")
     url_final_cambiada+= "?autoplay=1"
-    print(url_final_cambiada)
+    #print(url_final_cambiada)
     ruta_foto = 'static/salir'+numero_sesion+'.jpg'
     session['numero']+=1
     cur.execute("UPDATE usuarios SET numero= %s",
